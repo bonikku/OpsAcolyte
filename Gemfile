@@ -29,6 +29,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
