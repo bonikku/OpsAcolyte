@@ -8,6 +8,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     handle_oauth 'Github'
   end
 
+  def twitter
+    handle_oauth 'Twitter'
+  end
+
   def handle_oauth(provider)
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.from_omniauth(request.env['omniauth.auth'])
