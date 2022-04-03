@@ -3,8 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable, :lockable,
-         :omniauthable, omniauth_providers: [:google_oauth2, :github, :twitter, :facebook]
+         :trackable, :lockable, :omniauthable,
+         omniauth_providers: [:google_oauth2, :github, :twitter, :facebook]
+
+  include Roleable
 
   def self.from_omniauth(access_token)
     data = access_token.info
@@ -23,5 +25,14 @@ class User < ApplicationRecord
     user.save
 
     user
+  end
+
+  # Default role
+  after_create do
+    self.update(operator: true)
+  end
+
+  def to_s
+    email
   end
 end
