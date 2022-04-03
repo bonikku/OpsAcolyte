@@ -20,7 +20,7 @@ Users: <%= @users.size %>
       <tr>
         <td><%= link_to user.id, user_path(user) %></td>
         <td><%= user %></td>
-        <td><%= user.access_locked? %></td>
+        <td><%= boolean_label(user.access_locked?) %></td>
         <td><%= user.name %></td>
         <td><%= user.provider %></td>
         <td><%= user.last_sign_in_at.to_formatted_s(:short) %></td>
