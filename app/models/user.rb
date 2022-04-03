@@ -20,7 +20,9 @@ class User < ApplicationRecord
     end
     user.uid = access_token.uid
     user.provider = access_token.provider
-    user.name = access_token.info.name
+    unless user.name.present?
+      user.name = access_token.info.name
+    end
     user.image = access_token.info.image
     user.save
 

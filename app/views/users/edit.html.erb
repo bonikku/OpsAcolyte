@@ -21,6 +21,10 @@
         </div>
       <% end %>
 
+      <div class="mb-2">
+        Name: <%= f.text_field :name %>
+      </div>
+
       <% User::ROLES.each do |role| %>
         <label>
           <%= f.check_box role %>
@@ -29,7 +33,7 @@
         <br>
       <% end %>
 
-      <%= f.button :submit %>
+      <%= f.submit class: "btn btn-success" %>
 
     <% end %>
   </div>

@@ -30,12 +30,14 @@
     <b>Roles: </b><%= @user.active_roles.join(", ").capitalize %>
     <br>
     <% if current_user.admin? %>
-      <%= link_to "Edit roles", edit_user_path(@user) %>
-      <%= link_to ban_status(@user), ban_user_path(@user), method: :patch %>
-      <%= link_to "Delete", @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="mt-1">
+        <%= link_to "Edit", edit_user_path(@user), class: "btn btn-sm btn-primary" %>
+        <%= link_to ban_status(@user), ban_user_path(@user), method: :patch, class: "btn btn-sm btn-warning" %>
+        <%= link_to "Delete", @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+      </div>
     <% end %>
   </div>
   <div class="card-footer">
-    <%= link_to "All users", users_path %>
+    <%= link_to "All users", users_path, class: "btn btn-sm btn-secondary" %>
   </div>
 </div>
