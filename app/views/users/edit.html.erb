@@ -25,14 +25,15 @@
         Name: <%= f.text_field :name %>
       </div>
 
-      <% User::ROLES.each do |role| %>
-        <label>
-          <%= f.check_box role %>
-          <%= role.to_s.humanize %>
-        </label>
-        <br>
+      <% if current_user.admin? %>
+        <% User::ROLES.each do |role| %>
+          <label>
+            <%= f.check_box role %>
+            <%= role.to_s.humanize %>
+          </label>
+          <br>
+        <% end %>
       <% end %>
-
       <%= f.submit class: "btn btn-success" %>
 
     <% end %>
