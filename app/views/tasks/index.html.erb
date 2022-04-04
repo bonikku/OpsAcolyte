@@ -13,6 +13,10 @@
       <tr>
         <th>Id</th>
     	  
+        <th>Name</th>
+        
+        <th>Description</th>
+        
         <th>Shift</th>
         
         <th>Center</th>
@@ -28,6 +32,10 @@
       <% @tasks.each do |task| %>
         <%= content_tag :tr, id: dom_id(task), class: dom_class(task) do %>
           <td><%= link_to task.id, task %></td>
+          
+            <td><%= task.name %></td>
+          
+            <td><%= task.description %></td>
           
             <td><%= task.shift %></td>
           

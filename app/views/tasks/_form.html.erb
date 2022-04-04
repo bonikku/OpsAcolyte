@@ -1,16 +1,17 @@
-
 <%= simple_form_for(@task) do |f| %>
-<%= f.error_notification %>
-<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<div class="form-inputs">
-    <%= f.association :shift %>
-    <%= f.association :center %>
-    <%= f.input :status %>
-    <%= f.input :start %>
-</div>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.association :shift, include_blank: false %>
+    <%= f.association :center, include_blank: false %>
+    <%= f.input :status, collection: Task.statuses, include_blank: false, as: :radio_buttons %>
+    <%= f.input :start, minute_step: 5, start_year: Date.today.year - 1, end_year: Date.today.year + 1 %>
+  </div>
 
-<div class="form-actions">
-  <%= f.button :submit %>
-</div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>
