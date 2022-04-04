@@ -58,13 +58,14 @@ class ShiftsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shift
-      @shift = Shift.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def shift_params
-      params.require(:shift).permit(:name, :center_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_shift
+    @shift = Shift.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def shift_params
+    params.require(:shift).permit(:name, :center_id, :start_time, :days, *Shift::DAYS_OF_WEEK)
+  end
 end

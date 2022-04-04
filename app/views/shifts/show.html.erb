@@ -5,15 +5,23 @@
     </h4>
   </div>
   <div class="card-body">
-  
+
     <b>Name:</b>
     <%= @shift.name %>
     <br>
-  
+
     <b>Center:</b>
     <%= @shift.center %>
     <br>
-  
+
+    <br>
+    <b>Start:</b>
+    <%= @shift.start_time&.to_formatted_s(:time) %>
+
+    <br>
+    <b>Days:</b>
+    <%= @shift.active_days.join(", ") %>
+
   </div>
   <div class="card-footer">
     <%= link_to 'Edit', edit_shift_path(@shift), class: 'btn btn-sm btn-warning' %>
