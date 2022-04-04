@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_04_083824) do
+ActiveRecord::Schema.define(version: 2022_04_04_143611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 2022_04_04_083824) do
     t.time "start_time"
     t.jsonb "days", null: false
     t.index ["center_id"], name: "index_shifts_on_center_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "shift_id", null: false
+    t.bigint "center_id", null: false
+    t.string "status"
+    t.datetime "start"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["center_id"], name: "index_tasks_on_center_id"
+    t.index ["shift_id"], name: "index_tasks_on_shift_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -59,4 +70,6 @@ ActiveRecord::Schema.define(version: 2022_04_04_083824) do
   end
 
   add_foreign_key "shifts", "centers"
+  add_foreign_key "tasks", "centers"
+  add_foreign_key "tasks", "shifts"
 end

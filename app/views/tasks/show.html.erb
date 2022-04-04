@@ -1,0 +1,30 @@
+<div class="card shadow">
+  <div class="card-header">
+    <h4>
+      Task
+    </h4>
+  </div>
+  <div class="card-body">
+  
+    <b>Shift:</b>
+    <%= @task.shift %>
+    <br>
+  
+    <b>Center:</b>
+    <%= @task.center %>
+    <br>
+  
+    <b>Status:</b>
+    <%= @task.status %>
+    <br>
+  
+    <b>Start:</b>
+    <%= @task.start %>
+    <br>
+  
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-sm btn-warning' %>
+    <%= link_to 'Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+  </div>
+</div>

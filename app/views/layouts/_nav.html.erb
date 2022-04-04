@@ -30,6 +30,12 @@
           Shifts
         <% end %>
       <% end %>
+      <% if current_user %>
+        <%= link_to tasks_path, class: "nav-link #{'active font-weight-bold' if current_page?(tasks_path)}" do %>
+          <div class="fa fa-list"></div>
+          Tasks
+        <% end %>
+      <% end %>
     </ul>
     <ul class="navbar-nav mr-right">
       <% if current_user %>
