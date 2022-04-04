@@ -19,9 +19,9 @@
         <% end %>
       <% end %>
       <% if current_user %>
-        <%= link_to shifts_path, class: "nav-link #{'active font-weight-bold' if current_page?(shifts_path)}" do %>
+        <%= link_to centers_path, class: "nav-link #{'active font-weight-bold' if current_page?(centers_path)}" do %>
           <div class="fa fa-door-closed"></div>
-          Shifts
+          Center
         <% end %>
       <% end %>
     </ul>
