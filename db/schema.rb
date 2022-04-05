@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_104402) do
+ActiveRecord::Schema.define(version: 2022_04_05_133934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "shift_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shift_id"], name: "index_assignments_on_shift_id"
+    t.index ["user_id"], name: "index_assignments_on_user_id"
+  end
 
   create_table "centers", force: :cascade do |t|
     t.string "name"
@@ -71,6 +80,8 @@ ActiveRecord::Schema.define(version: 2022_04_05_104402) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "assignments", "shifts"
+  add_foreign_key "assignments", "users"
   add_foreign_key "shifts", "centers"
   add_foreign_key "tasks", "centers"
   add_foreign_key "tasks", "shifts"
