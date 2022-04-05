@@ -8,13 +8,16 @@ class ShiftsController < ApplicationController
 
   # GET /shifts/1 or /shifts/1.json
   def show
+    @tasks = @shift.tasks
   end
 
   def generate
-    @shift.schedule.occurrences(Time.now + 2.weeks).each do |occurrence|
-      byebug
+    # Delete future tasks to regenerate them
+    @shift.tasks.where("start > ?", DateTime.now).destroy.all
+
+    # Generate future tasks
+    @shift.schedule.next_occurrences(4).each do |occurrence|
       @shift.tasks.find_or_create_by(start: occurrence, center: @shift.center, name: "test")
-      byebug
     end
     redirect_to tasks_path, notice: 'Tasks generated'
   end

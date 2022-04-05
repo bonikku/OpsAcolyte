@@ -1,0 +1,15 @@
+<div class="card shadow mt-1">
+  <div class="card-body">
+    <div class="table-responsive-sm">
+      <%= month_calendar(events: @tasks, attribute: :start) do |date, tasks| %>
+        <%= date %>
+        <% tasks.each do |task| %>
+          <div>
+            Task: <%= link_to task.name, task_path(task) %>
+            Shift: <%= link_to task.shift_id, shift_path(task.shift_id) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

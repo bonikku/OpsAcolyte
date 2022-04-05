@@ -6,4 +6,8 @@ class StaticPagesController < ApplicationController
 
   def privacy_policy
   end
+
+  def calendar
+    @tasks = Task.all
+  end
 end

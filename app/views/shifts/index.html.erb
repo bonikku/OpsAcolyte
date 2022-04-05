@@ -38,14 +38,14 @@
 
         <td><%= shift.center %></td>
 
-        <td><%= shift.start_time.to_s(:time) %></td>
+        <td><%= shift.start_time %></td>
 
         <td><%= shift.active_days.join(", ") %></td>
 
         <td><%= shift.schedule %></td>
 
         <td>
-          <% shift.schedule.occurrences(Time.now + 2.weeks).each do |occurrence| %>
+          <% shift.schedule.next_occurrences(5).each do |occurrence| %>
             <%= occurrence&.strftime("%b / %d") %>
             <br>
           <% end %>

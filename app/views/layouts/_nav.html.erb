@@ -36,6 +36,12 @@
           Tasks
         <% end %>
       <% end %>
+      <% if current_user %>
+        <%= link_to calendar_path, class: "nav-link #{'active font-weight-bold' if current_page?(calendar_path)}" do %>
+          <div class="fa fa-calendar"></div>
+          Calendar
+        <% end %>
+      <% end %>
     </ul>
     <ul class="navbar-nav mr-right">
       <% if current_user %>
