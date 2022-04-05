@@ -1,5 +1,6 @@
 class Shift < ApplicationRecord
   belongs_to :center
+  has_many :tasks
 
   include Schedulable
 

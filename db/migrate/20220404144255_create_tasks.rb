@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :description
       t.belongs_to :shift, null: false, foreign_key: true
       t.belongs_to :center, null: false, foreign_key: true
-      t.string :status
+      t.string :status, default: "Pending"
       t.datetime :start
 
       t.timestamps

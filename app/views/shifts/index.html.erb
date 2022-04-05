@@ -23,9 +23,10 @@
 
       <th>Schedule</th>
 
-      <td>Ocurrences</td>
+      <th>Ocurrences</th>
 
       <th>Actions</th>
+
     </tr>
     </thead>
     <tbody>
@@ -48,6 +49,7 @@
             <%= occurrence&.strftime("%b / %d") %>
             <br>
           <% end %>
+          <%= link_to 'Generate tasks', generate_shift_path(shift), method: :patch %>
         </td>
         <td>
           <%= link_to 'Edit', edit_shift_path(shift), class: 'btn btn-sm btn-warning' %>

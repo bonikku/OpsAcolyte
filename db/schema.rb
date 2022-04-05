@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_04_04_144255) do
     t.string "description"
     t.bigint "shift_id", null: false
     t.bigint "center_id", null: false
-    t.string "status"
+    t.string "status", default: "Pending"
     t.datetime "start"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

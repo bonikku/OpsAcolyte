@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :tasks
-  resources :shifts
+  resources :shifts do
+    member do
+      patch :generate
+    end
+  end
   resources :centers
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: [:index, :show, :destroy, :edit, :update] do

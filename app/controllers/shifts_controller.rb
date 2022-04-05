@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-  before_action :set_shift, only: %i[ show edit update destroy ]
+  before_action :set_shift, only: %i[ show edit update destroy generate ]
 
   # GET /shifts or /shifts.json
   def index
@@ -8,6 +8,15 @@ class ShiftsController < ApplicationController
 
   # GET /shifts/1 or /shifts/1.json
   def show
+  end
+
+  def generate
+    @shift.schedule.occurrences(Time.now + 2.weeks).each do |occurrence|
+      byebug
+      @shift.tasks.find_or_create_by(start: occurrence, center: @shift.center, name: "test")
+      byebug
+    end
+    redirect_to tasks_path, notice: 'Tasks generated'
   end
 
   # GET /shifts/new
