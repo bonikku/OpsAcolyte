@@ -1,24 +1,9 @@
-# README
+# OpsAcolyte
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An app showing pending tasks to-do in a specific shift. Initially created as a webapp to help in my previous job.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Currently unfinished although, the core features are fully implemented which are:
+** OmniAuth logging with facebook, github, google and twitter
+** Users created with devise and :lockable
+** Creating a shift, work center and tasks
+** Many to many relationships like on the diagram below
